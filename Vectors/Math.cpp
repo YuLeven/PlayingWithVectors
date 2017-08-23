@@ -13,11 +13,11 @@ Math::RadiansToDegrees(float radians)
 bool 
 Math::IsNearlyZero(float value)
 {
-	return value < TOLERANCE;
+	return IsNearlyZero(value, TOLERANCE);
 }
 
 bool 
-Math::IsNearlyZero(float value, float tolerance = TOLERANCE)
+Math::IsNearlyZero(float value, float tolerance)
 {
 	return value < tolerance;
 }
