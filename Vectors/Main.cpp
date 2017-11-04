@@ -177,13 +177,6 @@ void LessonSix()
 
 }
 
-void LessonSeven()
-{
-	PrintSectionName("LessonSeven");
-
-
-}
-
 int main()
 {
 	FreeCalculations();
@@ -192,7 +185,6 @@ int main()
 	LessonFour();
 	LessonFive();
 	LessonSix();
-	LessonSeven();
 
 	return 0;
 }
