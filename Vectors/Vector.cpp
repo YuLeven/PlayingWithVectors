@@ -110,7 +110,8 @@ Vector3::IsParallelTo(const Vector3& Vector) const
 			ValueOfTheta(*this, Vector) == Math::PI;
 }
 
-bool Vector3::IsZero() const
+bool 
+Vector3::IsZero() const
 {
 	//Only the zero vector has a magnitude of zero
 	return  Math::IsNearlyZero(Magnitude());
