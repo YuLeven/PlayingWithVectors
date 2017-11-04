@@ -12,22 +12,31 @@ Vector3::Vector3(float nX, float nY, float nZ) : X(nX), Y(nY), Z(nZ) { }
 Vector3::Vector3(const Vector3& Vector) : X(Vector.X), Y(Vector.Y), Z(Vector.Z) { }
 
 Vector3 
-Vector3::operator+(const Vector3& Vector)
+Vector3::operator+(const Vector3& VectorB)
 {
 	return Vector3(
-		X + Vector.X,
-		Y + Vector.Y,
-		Z + Vector.Z
+		X + VectorB.X,
+		Y + VectorB.Y,
+		Z + VectorB.Z
 	);
 }
 
 Vector3 
-Vector3::operator-(const Vector3& Vector)
+Vector3::operator-(const Vector3& VectorB)
 {
 	return Vector3(
-		X - Vector.X,
-		Y - Vector.Y,
-		Z - Vector.Z
+		X - VectorB.X,
+		Y - VectorB.Y,
+		Z - VectorB.Z
+	);
+}
+
+const Vector3 Vector3::operator-(const Vector3& VectorB) const
+{
+	return Vector3(
+		X - VectorB.X,
+		Y - VectorB.Y,
+		Z - VectorB.Z
 	);
 }
 
@@ -88,26 +97,26 @@ Vector3::ValueOfTheta(const Vector3& VectorA, const Vector3& VectorB)
 }
 
 bool 
-Vector3::IsOrthogonalTo(const Vector3& Vector) const
+Vector3::IsOrthogonalTo(const Vector3& VectorB) const
 {
 	return Math::IsNearlyZero(
 		abs(
-			DotProduct(*this, Vector)
+			DotProduct(*this, VectorB)
 		)
 	);
 }
 
 bool 
-Vector3::IsParallelTo(const Vector3& Vector) const
+Vector3::IsParallelTo(const Vector3& VectorB) const
 {
 			//This is the zero vector
-	return  this->IsZero()										||
+	return  this->IsZero()											||
 			//Or the other vector is the zero vector
-			Vector.IsZero()										||
+			VectorB.IsZero()										||
 			//Or the angle has a value of zero in radians
-			Math::IsNearlyZero(ValueOfTheta(*this, Vector))		||
+			Math::IsNearlyZero(ValueOfTheta(*this, VectorB))		||
 			//Or the angle has a value of PI (180º) in radians
-			ValueOfTheta(*this, Vector) == Math::PI;
+			ValueOfTheta(*this, VectorB) == Math::PI;
 }
 
 bool 
@@ -115,6 +124,22 @@ Vector3::IsZero() const
 {
 	//Only the zero vector has a magnitude of zero
 	return  Math::IsNearlyZero(Magnitude());
+}
+
+Vector3
+Vector3::ComponentParallelTo(Vector3 VectorB) const
+{
+	// The projection of self onto a vector B
+	// equals the normal of B times 
+	// the dot product of the normal of B and self
+	float Weight = Vector3::DotProduct(*this, VectorB.Normalization());
+	return VectorB.Normalization() * Weight;
+}
+
+Vector3
+Vector3::ComponentOrthogonalTo(Vector3 VectorB) const
+{
+	return *this - this->ComponentParallelTo(VectorB);
 }
 
 std::ostream 

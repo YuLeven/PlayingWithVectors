@@ -153,6 +153,37 @@ void LessonFive()
 	cout << endl;
 }
 
+void LessonSix()
+{
+	PrintSectionName("LessonSix");
+	
+	auto FirstVector = Vector3(3.039f, 1.879f, 0.f);
+	auto SecondVector = Vector3(0.825, 2.036f, 0.f);
+
+	cout << FirstVector << endl;
+	cout << SecondVector << endl;  
+	cout << "Value of first vector parallel onto second: " << endl; 
+	cout << FirstVector.ComponentParallelTo(SecondVector) << endl;
+	PrintLine();
+
+	auto FourthVector = Vector3(-9.88f, -3.264f, -8.159f);
+	auto FifthVector = Vector3(-2.155f, -9.353f, -9.473f);
+
+	cout << FourthVector << endl;
+	cout << FifthVector << endl;
+
+	cout << "Value of first vector orthogonal onto second:" << endl;
+	cout << FourthVector.ComponentOrthogonalTo(FifthVector) << endl;
+
+}
+
+void LessonSeven()
+{
+	PrintSectionName("LessonSeven");
+
+
+}
+
 int main()
 {
 	FreeCalculations();
@@ -160,6 +191,8 @@ int main()
 	LessonThree();
 	LessonFour();
 	LessonFive();
+	LessonSix();
+	LessonSeven();
 
 	return 0;
 }

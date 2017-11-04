@@ -17,6 +17,7 @@ public:
 	//Common vector operations using operator overload
 	Vector3 operator+(const Vector3& Vector);
 	Vector3 operator-(const Vector3& Vector);
+	const Vector3 operator-(const Vector3& Vector) const;
 	//Times scalar
 	Vector3 operator*(float Scalar);
 	//Cout printing
@@ -30,4 +31,6 @@ public:
 	bool IsOrthogonalTo(const Vector3& Vector) const;
 	bool IsParallelTo(const Vector3& Vector) const;
 	bool IsZero() const;
+	Vector3 ComponentParallelTo(Vector3 VectorB) const;
+	Vector3 ComponentOrthogonalTo(Vector3 VectorB) const;
 };
