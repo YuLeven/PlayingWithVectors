@@ -166,15 +166,44 @@ void LessonSix()
 	cout << FirstVector.ComponentParallelTo(SecondVector) << endl;
 	PrintLine();
 
-	auto FourthVector = Vector3(-9.88f, -3.264f, -8.159f);
-	auto FifthVector = Vector3(-2.155f, -9.353f, -9.473f);
+	auto ThirdVector = Vector3(-9.88f, -3.264f, -8.159f);
+	auto FourthVector = Vector3(-2.155f, -9.353f, -9.473f);
 
+	cout << ThirdVector << endl;
 	cout << FourthVector << endl;
-	cout << FifthVector << endl;
 
 	cout << "Value of first vector orthogonal onto second:" << endl;
-	cout << FourthVector.ComponentOrthogonalTo(FifthVector) << endl;
+	cout << ThirdVector.ComponentOrthogonalTo(FourthVector) << endl;
 
+}
+
+void LessonSeven()
+{
+	PrintSectionName("LessonSeven");
+
+	auto FirstVector = Vector3(8.462f, 7.893f, -8.187f);
+	auto SecondVector = Vector3(6.984f, -5.975f, 4.778f);
+	
+	cout << FirstVector << endl;
+	cout << SecondVector << endl;
+	cout << "Cross product:" << endl;
+	cout << Vector3::CrossProduct(FirstVector, SecondVector) << endl;
+	PrintLine();
+
+	auto ThirdVector = Vector3(-8.987f, -9.838f, 5.031f);
+	auto FourthVector = Vector3(-4.268, -1.861f, -8.866);
+	cout << ThirdVector << endl;
+	cout << FourthVector << endl;
+	cout << "Area of parallelogram spanned by Va and Vb:" << endl;
+	cout << Vector3::AreaOfParallelogram(ThirdVector, FourthVector) << endl;
+	PrintLine();
+
+	auto FifthVector = Vector3(1.5f, 9.547f, 3.691f);
+	auto SixthVector = Vector3(-6.007f, 0.124f, 5.772f);
+	cout << FifthVector << endl;
+	cout << SixthVector << endl;
+	cout << "Area of triangle spanned by Va and Vb:" << endl;
+	cout << Vector3::AreaOfTriangle(FifthVector, SixthVector) << endl;
 }
 
 int main()
@@ -185,6 +214,7 @@ int main()
 	LessonFour();
 	LessonFive();
 	LessonSix();
+	LessonSeven();
 
 	return 0;
 }

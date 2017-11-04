@@ -28,6 +28,9 @@ public:
 	float Magnitude() const;
 	static float DotProduct(const Vector3& VectorA, const Vector3& VectorB);
 	static float ValueOfTheta(const Vector3& VectorA, const Vector3& VectorB);
+	static Vector3 CrossProduct(const Vector3& VectorA, const Vector3& VectorB);
+	static float AreaOfParallelogram(const Vector3& VectorA, const Vector3& VectorB);
+	static float AreaOfTriangle(const Vector3& VectorA, const Vector3& VectorB);
 	bool IsOrthogonalTo(const Vector3& Vector) const;
 	bool IsParallelTo(const Vector3& Vector) const;
 	bool IsZero() const;

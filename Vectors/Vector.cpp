@@ -142,6 +142,28 @@ Vector3::ComponentOrthogonalTo(Vector3 VectorB) const
 	return *this - this->ComponentParallelTo(VectorB);
 }
 
+Vector3
+Vector3::CrossProduct(const Vector3& VectorA, const Vector3& VectorB)
+{
+	return Vector3(
+		VectorA.Y * VectorB.Z - VectorB.Y * VectorA.Z,
+		-(VectorA.X * VectorB.Z - VectorB.X * VectorA.Z),
+		VectorA.X * VectorB.Y - VectorB.X * VectorA.Y
+	);
+}
+
+float 
+Vector3::AreaOfParallelogram(const Vector3& VectorA, const Vector3& VectorB)
+{
+	return Vector3::CrossProduct(VectorA, VectorB).Magnitude();
+}
+
+float 
+Vector3::AreaOfTriangle(const Vector3& VectorA, const Vector3& VectorB)
+{
+	return Vector3::AreaOfParallelogram(VectorA, VectorB) / 2.f;
+}
+
 std::ostream 
 &operator<<(std::ostream &Stream, const Vector3& Vector)
 {
